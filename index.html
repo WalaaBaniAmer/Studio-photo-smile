@@ -144,5 +144,35 @@
         window.open(`https://wa.me/962788693107?text=${msg}`, '_blank');
     }
 </script>
-</body>
+</body><script>
+    const form = document.querySelector('form');
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        
+        // جلب القيم من الخانات (تأكد أن id المدخلات مطابق)
+        const nameVal = document.getElementById('n').value; 
+        const phoneVal = document.getElementById('p').value;
+
+        fetch('https://sheetdb.io/api/v1/xflrrgrx7y0nd', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                data: [
+                    {
+                        'name': nameVal,   // يطابق العمود A في الجدول
+                        'phone': phoneVal, // يطابق العمود B الجديد في الجدول
+                        'date': new Date().toLocaleString()
+                    }
+                ]
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert("تم استلام حجزك بنجاح!");
+            form.reset();
+        })
+        .catch(err => alert("عذراً، حدث خطأ في الإرسال"));
+    };
+</script>
+
 </html>
