@@ -144,14 +144,15 @@
         window.open(`https://wa.me/962788693107?text=${msg}`, '_blank');
     }
 </script>
-</body><script>
+</body>
+    <script>
     const form = document.querySelector('form');
     form.onsubmit = function(e) {
         e.preventDefault();
         
         // جلب القيم من الخانات (تأكد أن id المدخلات مطابق)
-        const nameVal = document.getElementById('n').value; 
-        const phoneVal = document.getElementById('p').value;
+        const nameVal = document.getElementById('Input').value; 
+        const phoneVal = document.getElementById('Input').value;
 
         fetch('https://sheetdb.io/api/v1/xflrrgrx7y0nd', {
             method: 'POST',
